@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link class="favicon-icon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✂️</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>CutFlow | استوديو المونتاج الذكي</title>
+    <meta name="title" content="CutFlow | مزيل السكتات الذكي للفيديوهات بالذكاء الاصطناعي" />
+    <meta name="description" content="اشيل السكتات واللحظات الصامتة من فيديوهاتك في ثوانٍ بالذكاء الاصطناعي. يدعم اللغة العربية والإنجليزية بدون الحاجة لبرامج مونتاج معقدة." />
+    
+    <!-- Google Fonts: Cairo (Arabic) & Inter (English/Numbers) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    
+    <!-- Global Loading Spinner Overlay for Auth Checks -->
+    <div id="globalAuthSpinner" class="auth-loading-overlay hidden">
+      <div class="spinner-container">
+        <div class="auth-spinner"></div>
+        <p class="auth-spinner-text" id="authSpinnerText">جاري التحقق من الهوية...</p>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- ROUTE VIEW: LANDING PAGE -->
+    <!-- ------------------------------------------------------------- -->
+    <div id="view-landing" class="route-view active">
+      <!-- Sticky Navbar -->
+      <header class="navbar-wrapper">
+        <div class="container navbar-container">
+          <a href="/" class="logo nav-route">
+            CutFlow <span>✂️</span>
+          </a>
+          
+          <nav class="nav-menu" id="navMenu">
+            <a href="#features" class="nav-link">المميزات</a>
+            <a href="#how-it-works" class="nav-link">كيف يعمل؟</a>
+            <a href="#pricing" class="nav-link">الأسعار</a>
+            <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
+            <div class="nav-mobile-divider"></div>
+            <!-- Dynamic auth items in mobile -->
+            <div class="mobile-auth-links" id="mobileAuthLinks">
+              <a href="/login" class="nav-link login-link nav-route">تسجيل الدخول</a>
+              <a href="/signup" class="btn btn-primary btn-nav nav-route">ابدأ مجاناً ✨</a>
+            </div>
+          </nav>
+
+          <div class="nav-actions" id="desktopAuthLinks">
+            <a href="/login" class="nav-link login-link desktop-only nav-route">تسجيل الدخول</a>
+            <a href="/signup" class="btn btn-primary desktop-only nav-route">ابدأ مجاناً ✨</a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="hero-glow-3"></div>
+        <div class="hero-floating-badge">🔥 أول silence remover عربي</div>
+        <div class="container hero-container">
+          
+          <div class="hero-content">
+            <div class="hero-badge">⚡ مدعوم بالذكاء الاصطناعي بالكامل</div>
+            <h1 class="hero-headline">
+              اشيل السكتات<br>
+              <span class="text-gradient">بـ AI فعلي</span>
+            </h1>
+            <p class="hero-subheadline">
+              بـ AI بيفهم العربي والإنجليزي — بدون ما تفتح أي برنامج تاني
+            </p>
+            <div class="hero-cta-group">
+              <a href="/signup" class="btn btn-lg btn-primary btn-glow nav-route">ابدأ مجاناً ✨</a>
+              <a href="#how-it-works" class="btn btn-lg btn-secondary">شوف كيف يعمل</a>
+            </div>
+            <div class="hero-features-list">
+              <span>✓ لا يتطلب خبرة مونتاج</span>
+              <span>✓ يدعم اللهجات العربية</span>
+              <span>✓ تصدير بجودة 4K</span>
+            </div>
+          </div>
+
+          <!-- Interactive Waveform Visual -->
+          <div class="hero-waveform-card glass-panel">
+            <div class="card-header">
+              <div class="window-controls">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+              </div>
+              <div class="waveform-title">المعاينة الحية: إزالة السكتات تلقائياً</div>
+            </div>
+            
+            <div class="waveform-body">
+              <div class="waveform-container" id="waveformContainer">
+                <div class="playhead" id="playhead"></div>
+                
+                <div class="wave-block sound" style="--width: 15%">
+                  <div class="bar" style="--h: 40%"></div>
+                  <div class="bar" style="--h: 60%"></div>
+                  <div class="bar" style="--h: 80%"></div>
+                  <div class="bar" style="--h: 70%"></div>
+                  <div class="bar" style="--h: 50%"></div>
+                </div>
+                <div class="wave-block silence" style="--width: 10%" data-duration="1.5">
+                  <div class="bar" style="--h: 10%"></div>
+                  <div class="bar" style="--h: 8%"></div>
+                  <div class="bar" style="--h: 10%"></div>
+                  <div class="silence-label">صمت (1.5ث)</div>
+                </div>
+                <div class="wave-block sound" style="--width: 25%">
+                  <div class="bar" style="--h: 60%"></div>
+                  <div class="bar" style="--h: 85%"></div>
+                  <div class="bar" style="--h: 90%"></div>
+                  <div class="bar" style="--h: 75%"></div>
+                  <div class="bar" style="--h: 60%"></div>
+                  <div class="bar" style="--h: 80%"></div>
+                  <div class="bar" style="--h: 50%"></div>
+                </div>
+                <div class="wave-block silence" style="--width: 12%" data-duration="2.0">
+                  <div class="bar" style="--h: 8%"></div>
+                  <div class="bar" style="--h: 10%"></div>
+                  <div class="bar" style="--h: 5%"></div>
+                  <div class="silence-label">صمت (2.0ث)</div>
+                </div>
+                <div class="wave-block sound" style="--width: 20%">
+                  <div class="bar" style="--h: 50%"></div>
+                  <div class="bar" style="--h: 75%"></div>
+                  <div class="bar" style="--h: 85%"></div>
+                  <div class="bar" style="--h: 60%"></div>
+                  <div class="bar" style="--h: 40%"></div>
+                </div>
+                <div class="wave-block silence" style="--width: 8%" data-duration="1.0">
+                  <div class="bar" style="--h: 5%"></div>
+                  <div class="bar" style="--h: 10%"></div>
+                  <div class="silence-label">صمت (1.0ث)</div>
+                </div>
+                <div class="wave-block sound" style="--width: 10%">
+                  <div class="bar" style="--h: 70%"></div>
+                  <div class="bar" style="--h: 85%"></div>
+                  <div class="bar" style="--h: 50%"></div>
+                </div>
+              </div>
+
+              <div class="waveform-controls">
+                <button class="btn-play" id="btnPlayWaveform">
+                  <span class="play-icon">▶</span>
+                  <span class="pause-icon hidden">⏸</span>
+                  <span class="btn-text">شغّل العرض التجريبي</span>
+                </button>
+
+                <div class="mode-toggles">
+                  <button class="mode-toggle-btn active" id="modeOriginal">الفيديو الأصلي (مع السكتات)</button>
+                  <button class="mode-toggle-btn" id="modeCleaned">الفيديو النظيف (بعد القطع)</button>
+                </div>
+              </div>
+              
+              <div class="waveform-meta-info">
+                <span id="waveformStatus">الحالة: متوقف. اضغط تشغيل لمشاهدة الحركة.</span>
+                <span id="savedTime" class="saved-time-badge hidden">تم توفير 4.5 ثوانٍ من الصمت! ✨</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats-section">
+        <div class="container stats-container">
+          <div class="stat-card">
+            <div class="stat-number" data-count="500">500+</div>
+            <div class="stat-label">مستخدم</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="2000000">2M+</div>
+            <div class="stat-label">دقيقة محفوظة</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <div class="stat-number">99.8%</div>
+            <div class="stat-label">دقة</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <div class="stat-number">0</div>
+            <div class="stat-label">برامج مطلوبة</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+          
+          <div class="section-header">
+            <h2 class="section-title">كيف يعمل كوت فلو؟</h2>
+            <p class="section-subtitle">ثلاث خطوات بسيطة تفصلك عن فيديو احترافي خالٍ من الفراغات والملل</p>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card glass-panel" data-step="1">
+              <div class="step-number-badge">1</div>
+              <div class="step-icon">📤</div>
+              <h3 class="step-title">ارفع الفيديو</h3>
+              <p class="step-desc">اسحب ملف الفيديو أو الصوت وضعه هنا. ندعم جميع الصيغ الشائعة (MP4, MOV, MP3).</p>
+            </div>
+            <div class="step-card glass-panel" data-step="2">
+              <div class="step-number-badge">2</div>
+              <div class="step-icon">🧠</div>
+              <h3 class="step-title">الـ AI بيشيل السكتات</h3>
+              <p class="step-desc">يقوم المحرك الذكي بتحليل الصوت بدقة، ويتعرف على السكتات ويزيلها بلحظات.</p>
+            </div>
+            <div class="step-card glass-panel" data-step="3">
+              <div class="step-number-badge">3</div>
+              <div class="step-icon">📥</div>
+              <h3 class="step-title">حمّل الفيديو ناضف</h3>
+              <p class="step-desc">استعرض النتيجة النهائية ثم قم بتحميل الفيديو مقصوصاً وجاهزاً للنشر فوراً.</p>
+            </div>
+          </div>
+
+          <!-- Uploader Simulator Box (Landing page demo uploader) -->
+          <div class="simulator-wrapper glass-panel" id="uploader-demo">
+            <div class="simulator-header">
+              <div class="simulator-indicator">
+                <span class="indicator-dot active" id="dot1"></span>
+                <span class="indicator-dot" id="dot2"></span>
+                <span class="indicator-dot" id="dot3"></span>
+              </div>
+              <span class="simulator-title">جرّب رفع فيديو محاكاة الآن 👇</span>
+            </div>
+
+            <!-- Step 1 View: Uploader -->
+            <div class="simulator-view active" id="simStep1">
+              <div class="drag-drop-zone" id="dragDropZone">
+                <div class="upload-icon-wrapper">
+                  <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                  </svg>
+                </div>
+                <h3>اسحب وأسقط الفيديو هنا</h3>
+                <p>أو اضغط لاختيار ملف من جهازك</p>
+                <span class="upload-limit">الحد الأقصى لحجم الملف: 500 ميجابايت</span>
+                <button class="btn btn-primary" id="btnSimUpload">اختر ملفاً للتجربة</button>
+                <input type="file" id="hiddenFileInput" accept="video/*,audio/*" style="display: none;" />
+              </div>
+            </div>
+
+            <!-- Step 2 View: AI Processing -->
+            <div class="simulator-view" id="simStep2">
+              <div class="processing-container">
+                <div class="spinner-outer">
+                  <div class="spinner-inner"></div>
+                  <div class="spinner-center">AI</div>
+                </div>
+                <h3 class="processing-title">جاري معالجة الصوت بالذكاء الاصطناعي...</h3>
+                <p class="processing-subtitle" id="processingStatusText">التعرف على سكتات اللغة العربية واللهجات المحلية...</p>
+                
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar-fill" id="simProgressBar" style="width: 0%"></div>
+                </div>
+                <span class="progress-percentage" id="simProgressPercentage">0%</span>
+              </div>
+            </div>
+
+            <!-- Step 3 View: Download -->
+            <div class="simulator-view" id="simStep3">
+              <div class="success-container">
+                <div class="success-icon-badge">✨</div>
+                <h3 class="success-title">تم تنظيف الفيديو بنجاح!</h3>
+                
+                <div class="results-card glass-panel">
+                  <div class="results-row">
+                    <span class="result-label">المدة الأصلية:</span>
+                    <span class="result-value">01:45 دقيقة</span>
+                  </div>
+                  <div class="results-row">
+                    <span class="result-label">المدة بعد المعالجة:</span>
+                    <span class="result-value text-success">01:12 دقيقة</span>
+                  </div>
+                  <div class="results-row highlight">
+                    <span class="result-label">إجمالي السكتات المحذوفة:</span>
+                    <span class="result-value">33 ثانية (31% وفر في الوقت)</span>
+                  </div>
+                </div>
+
+                <div class="success-actions">
+                  <button class="btn btn-primary" id="btnSimDownload">📥 تحميل الفيديو المقصوص</button>
+                  <button class="btn btn-secondary" id="btnSimReset">تجربة ملف آخر</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="features-section">
+        <div class="features-glow-1"></div>
+        <div class="container">
+          
+          <div class="section-header">
+            <h2 class="section-title">لماذا يختار المحترفون <span class="text-gradient">CutFlow</span>؟</h2>
+            <p class="section-subtitle">نحن لا نقوم بقطع الصوت بشكل عشوائي، بل نصنع لك تدفقاً طبيعياً ومحترفاً</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-wrapper">🗣️</div>
+              <h3 class="feature-card-title">ذكاء يفهم لغتك ولهجتك</h3>
+              <p class="feature-card-desc">سواء كنت تتحدث الفصحى، المصرية، الخليجية، أو الإنجليزية، خوارزمياتنا تميز الكلمات من الوقفات الطبيعية وغير الطبيعية بدقة بالغة.</p>
+            </div>
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-wrapper">✂️</div>
+              <h3 class="feature-card-title">قطع سلس وطبيعي</h3>
+              <p class="feature-card-desc">تجنب تقطيع الصوت المزعج. يضيف CutFlow تأثيراً انتقالياً متناهي الصغر (Micro-crossfade) عند كل قطع لضمان صوت ناعم وبدون كتم مفاجئ.</p>
+            </div>
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-wrapper">⏳</div>
+              <h3 class="feature-card-title">حفظ الساعات من العمل</h3>
+              <p class="feature-card-desc">تخلص من عمليات البحث اليدوي عن الفراغات في الخط الزمني لمشروعك. ارفع المقطع واجعل الـ AI يقوم بالعمل الممل in ثوانٍ معدودة.</p>
+            </div>
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-wrapper">🔌</div>
+              <h3 class="feature-card-title">تصدير لبرامج المونتاج</h3>
+              <p class="feature-card-desc">لا حاجة لتغيير سير عملك الحالي. يمكنك تصدير الملف كـ XML أو EDL لتفتحه مباشرة في Premiere, DaVinci Resolve أو Final Cut مع الحفاظ على المقاطع المقصوصة كـ Cuts قابلة للتعديل!</p>
+            </div>
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-wrapper">🔤</div>
+              <h3 class="feature-card-title">حذف الكلمات الحشوية (قريباً)</h3>
+              <p class="feature-card-desc">تخلص تلقائياً من كلمات التلعثم مثل "امممم"، "يعني"، "آآآه" باللغتين العربية والإنجليزية لتبدو متحدثاً واثقاً ومقنعاً.</p>
+            </div>
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-wrapper">🔒</div>
+              <h3 class="feature-card-title">خصوصية وأمان 100%</h3>
+              <p class="feature-card-desc">نحن نحترم خصوصية محتواك. تُشفّر جميع الفيديوهات المرفوعة وتُحذف تلقائياً من خوادمنا فور انتهائك من تحميل النسخة النظيفة.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section id="pricing" class="pricing-section">
+        <div class="container">
+          
+          <div class="section-header">
+            <h2 class="section-title">خطط تناسب جميع صناع المحتوى</h2>
+            <p class="section-subtitle">ابدأ مجاناً وقم بالترقية عندما تحتاج إلى المزيد من الساعات والميزات الاحترافية</p>
+            
+            <div class="pricing-toggle-wrapper">
+              <span class="toggle-label" id="labelMonthly">شهرياً</span>
+              <button class="pricing-toggle-btn" id="billingToggle" aria-label="Toggle billing period">
+                <span class="toggle-dot"></span>
+              </button>
+              <span class="toggle-label" id="labelYearly">سنوياً <span class="discount-badge">خصم 20% 🔥</span></span>
+            </div>
+          </div>
+
+          <div class="pricing-grid">
+            <!-- Tier 1: Free -->
+            <div class="pricing-card glass-panel">
+              <h3 class="tier-name">Free</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="price-value" data-monthly="0" data-yearly="0">0</span>
+                <span class="period">/شهرياً</span>
+              </div>
+              <p class="tier-desc">مثالي للمبتدئين لتجربة قوة الذكاء الاصطناعي</p>
+              <div class="divider"></div>
+              <ul class="tier-features">
+                <li>✨ 30 دقيقة معالجة/شهر</li>
+                <li>✓ دعم العربية والإنجليزية</li>
+                <li>✓ تصدير بجودة 720p</li>
+                <li>✓ إزالة السكتات الأساسية</li>
+                <li class="disabled">✗ إزالة الكلمات الحشوية (Filler Words)</li>
+                <li class="disabled">✗ أولوية معالجة فائقة</li>
+                <li class="disabled">✗ الوصول لواجهة المبرمجين API</li>
+              </ul>
+              <a href="/signup" class="btn btn-secondary btn-block nav-route">ابدأ مجاناً الآن</a>
+            </div>
+
+            <!-- Tier 2: Pro -->
+            <div class="pricing-card glass-panel popular">
+              <div class="popular-badge">الأكثر شعبية ⭐</div>
+              <h3 class="tier-name">Pro</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="price-value" data-monthly="9" data-yearly="7">9</span>
+                <span class="period">/شهرياً</span>
+              </div>
+              <p class="tier-desc">الخيار الأفضل لصناع المحتوى المحترفين واليوتيوبرز</p>
+              <div class="divider"></div>
+              <ul class="tier-features">
+                <li>✨ 5 ساعات معالجة شهرياً</li>
+                <li>✓ إزالة الكلمات الحشوية (Filler Words)</li>
+                <li>✓ تصدير بجودة عالية 1080p/4K</li>
+                <li>✓ إزالة السكتات المتقدمة (تعديل الذكاء)</li>
+                <li>✓ معالجة سريعة وذات أولوية</li>
+                <li class="disabled">✗ الوصول لواجهة المبرمجين API</li>
+                <li class="disabled">✗ دعم فني مخصص 24/7</li>
+              </ul>
+              <a href="/signup" class="btn btn-primary btn-block nav-route">اشترك في باقة Pro</a>
+            </div>
+
+            <!-- Tier 3: Creator -->
+            <div class="pricing-card glass-panel">
+              <h3 class="tier-name">Creator</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="price-value" data-monthly="19" data-yearly="15">19</span>
+                <span class="period">/شهرياً</span>
+              </div>
+              <p class="tier-desc">لفرق الإنتاج والشركات التي تبحث عن أداء بلا حدود</p>
+              <div class="divider"></div>
+              <ul class="tier-features">
+                <li>✨ معالجة غير محدودة (Unlimited)</li>
+                <li>✓ إزالة الكلمات الحشوية بشكل كامل</li>
+                <li>✓ جودة تصدير فائقة بدون ضغط</li>
+                <li>✓ معالجة فائقة السرعة (خوادم مخصصة)</li>
+                <li>✓ الوصول الكامل لـ API Access</li>
+                <li>✓ دعم فني مخصص ومباشر 24/7</li>
+                <li>✓ تصدير لجميع صيغ المونتاج (XML, EDL)</li>
+              </ul>
+              <a href="/signup" class="btn btn-secondary btn-block nav-route">اشترك في باقة Creator</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="faq-section">
+        <div class="container">
+          
+          <div class="section-header">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <p class="section-subtitle">كل ما تود معرفته عن طريقة عمل كوت فلو والميزات المقدمة</p>
+          </div>
+
+          <div class="faq-accordion-wrapper">
+            <div class="faq-item glass-panel">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">ما هي أنواع ملفات الفيديو والصوت التي تدعمونها؟</span>
+                <span class="faq-icon">＋</span>
+              </button>
+              <div class="faq-content">
+                <p>ندعم جميع صيغ الفيديو الشائعة مثل MP4, MOV, WEBM, AVI بالإضافة إلى صيغ الصوت مثل MP3, WAV, M4A, AAC. يمكنك رفع أي ملف وسيقوم الـ AI بمعالجته فوراً.</p>
+              </div>
+            </div>
+            <div class="faq-item glass-panel">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">هل يدعم البرنامج اللغة العربية بكافة لهجاتها؟</span>
+                <span class="faq-icon">＋</span>
+              </button>
+              <div class="faq-content">
+                <p>نعم بكل تأكيد. تم تدريب خوارزميات الذكاء الاصطناعي لدينا على اللغة العربية الفصحى بالإضافة إلى اللهجات العربية المختلفة (المصرية، الخليجية، الشامية، المغربية) لتمييز الوقفات الطبيعية من السكتات غير الضرورية بدقة متناهية.</p>
+              </div>
+            </div>
+            <div class="faq-item glass-panel">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">هل يمكنني تعديل المقاطع المقصوصة في برامج المونتاج مثل Premiere أو DaVinci؟</span>
+                <span class="faq-icon">＋</span>
+              </button>
+              <div class="faq-content">
+                <p>نعم، تتيح لك الخطط المدفوعة (Pro و Creator) تصدير ملفات المخطط الزمني بصيغة XML أو EDL. يمكنك استيراد هذا الملف في Premiere Pro أو DaVinci Resolve أو Final Cut لتظهر لك القصاصات على التايم لاين مباشرة، مما يتيح لك حرية التعديل عليها يدوياً لاحقاً.</p>
+              </div>
+            </div>
+            <div class="faq-item glass-panel">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">هل تضمنون سرية وأمن الفيديوهات المرفوعة؟</span>
+                <span class="faq-icon">＋</span>
+              </button>
+              <div class="faq-content">
+                <p>خصوصيتك هي أولويتنا القصوى. نقوم بتشفير كافة الملفات المرفوعة أثناء النقل والمعالجة. كما يتم حذف جميع الفيديوهات وملفات الصوت وملفات العمل بشكل نهائي وتلقائي من خوادمنا بعد 24 ساعة من انتهاء معالجتها.</p>
+              </div>
+            </div>
+            <div class="faq-item glass-panel">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">هل هناك حد أقصى لطول الفيديو الذي يمكنني رفعه؟</span>
+                <span class="faq-icon">＋</span>
+              </button>
+              <div class="faq-content">
+                <p>في الخطة المجانية، الحد الأقصى للملف الواحد هو 10 دقائق وحجم 100 ميجابايت. في الخطط المدفوعة، يمكنك رفع ملفات تصل مدتها إلى 4 ساعات وبحجم يصل إلى 2 جيجابايت للملف الواحد.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Bottom CTA Section -->
+      <section id="cta-section" class="cta-bottom-section">
+        <div class="cta-glow"></div>
+        <div class="container cta-bottom-container">
+          <h2 class="cta-title">هل أنت جاهز <span class="text-gradient">لتوفير 80%</span> من وقت المونتاج?</h2>
+          <p class="cta-subtitle">انضم لأكثر من 5000+ صانع محتوى ويوتيوبر يعتمدون على CutFlow لتسريع إنتاجهم اليومي.</p>
+          <div class="cta-actions">
+            <a href="/signup" class="btn btn-lg btn-primary btn-glow nav-route">ابدأ مجاناً الآن ✨</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer-wrapper">
+        <div class="container footer-container">
+          
+          <div class="footer-brand">
+            <a href="/" class="logo nav-route">CutFlow <span>✂️</span></a>
+            <p class="footer-brand-desc">المنصة الأولى عربياً لإزالة الصمت والسكتات من الفيديوهات باستخدام الذكاء الاصطناعي.</p>
+          </div>
+
+          <div class="footer-links-group">
+            <div class="footer-link-col">
+              <h4>المنتج</h4>
+              <a href="#features">المميزات</a>
+              <a href="#how-it-works">كيف يعمل؟</a>
+              <a href="#pricing">الأسعار</a>
+            </div>
+            <div class="footer-link-col">
+              <h4>الشركة</h4>
+              <a href="#">من نحن</a>
+              <a href="#">المدونة</a>
+              <a href="#">اتصل بنا</a>
+            </div>
+            <div class="footer-link-col">
+              <h4>قانوني</h4>
+              <a href="#">شروط الخدمة</a>
+              <a href="#">سياسة الخصوصية</a>
+              <a href="#">سياسة الكوكيز</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="container footer-bottom">
+          <p>© 2026 CutFlow. جميع الحقوق محفوظة لشركة كوت فلو للبرمجيات.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">🕊️ X</a>
+            <a href="#" aria-label="YouTube">📺 YouTube</a>
+            <a href="#" aria-label="GitHub">💻 GitHub</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- ------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- ROUTE VIEW: PRICING -->
+    <!-- ------------------------------------------------------------- -->
+    <div id="view-pricing" class="route-view">
+      <header class="navbar-wrapper">
+        <div class="container navbar-container">
+          <a href="/" class="logo nav-route">CutFlow <span>✂️</span></a>
+          <div class="nav-actions">
+            <a href="/login" class="nav-link login-link nav-route">تسجيل الدخول</a>
+            <a href="/signup" class="btn btn-primary nav-route">ابدأ مجاناً ✨</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="pricing-page-section">
+        <div class="pricing-glow-1"></div>
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">اختر الباقة المناسبة لك</h2>
+            <p class="section-subtitle">لا توجد حدود للإبداع مع CutFlow</p>
+            <div class="pricing-toggle-wrapper">
+              <span class="toggle-label" id="labelMonthlyPricing">شهرياً</span>
+              <button class="pricing-toggle-btn active" id="billingTogglePricing" aria-label="Toggle billing period">
+                <span class="toggle-dot"></span>
+              </button>
+              <span class="toggle-label" id="labelYearlyPricing">كل 3 شهور <span class="discount-badge">خصم 33% 🔥</span></span>
+            </div>
+          </div>
+          
+          <div class="pricing-cards-container">
+            <!-- Monthly Plan -->
+            <div class="pricing-plan-card glass-panel monthly-plan">
+              <h3 class="plan-name">شهري</h3>
+              <div class="plan-price">
+                <span class="currency">$</span><span class="price-val">12</span><span class="period">/شهر</span>
+              </div>
+              <ul class="plan-features">
+                <li>✅ ساعات غير محدودة</li>
+                <li>✅ إزالة السكتات بالـ AI</li>
+                <li>✅ إزالة كلمات الحشو (آه، يعني، امممم)</li>
+                <li>✅ تصدير MP4 + EDL + XML + SRT</li>
+                <li>✅ Timeline Editor كامل</li>
+                <li>✅ دعم العربي والإنجليزي</li>
+                <li>✅ أولوية في المعالجة</li>
+              </ul>
+              <button class="btn btn-subscribe btn-block btn-payment-toast">اشترك الآن</button>
+            </div>
+            
+            <!-- Quarterly Plan -->
+            <div class="pricing-plan-card glass-panel quarterly-plan featured">
+              <div class="savings-badge">الأوفر 🔥</div>
+              <h3 class="plan-name">ربع سنوي (كل 3 شهور)</h3>
+              <div class="plan-price">
+                <span class="currency">$</span><span class="price-val">8</span><span class="period">/شهر</span>
+                <div class="billing-note">(تُدفع $24 كل 3 شهور)</div>
+              </div>
+              <ul class="plan-features">
+                <li>✅ ساعات غير محدودة</li>
+                <li>✅ إزالة السكتات بالـ AI</li>
+                <li>✅ إزالة كلمات الحشو (آه، يعني، امممم)</li>
+                <li>✅ تصدير MP4 + EDL + XML + SRT</li>
+                <li>✅ Timeline Editor كامل</li>
+                <li>✅ دعم العربي والإنجليزي</li>
+                <li>✅ أولوية في المعالجة</li>
+              </ul>
+              <button class="btn btn-subscribe btn-block btn-payment-toast">اشترك الآن</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ROUTE VIEW: SIGN UP PAGE -->
+    <!-- ------------------------------------------------------------- -->
+    <div id="view-signup" class="route-view">
+      <div class="auth-page-wrapper">
+        <div class="auth-card glass-panel">
+          <div class="auth-header">
+            <a href="/" class="auth-logo nav-route">CutFlow <span>✂️</span></a>
+            <h2>إنشاء حساب جديد</h2>
+            <p>انضم إلينا وابدأ بتنظيف فيديوهاتك مجاناً</p>
+          </div>
+          
+          <form class="auth-form" id="signupForm">
+            <div class="form-error-msg hidden" id="signupError"></div>
+
+            <div class="form-group">
+              <label for="signupName">الاسم الكامل</label>
+              <input type="text" id="signupName" required placeholder="أدخل اسمك الكامل" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="signupEmail">البريد الإلكتروني</label>
+              <input type="email" id="signupEmail" required placeholder="name@example.com" autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="signupPassword">كلمة المرور</label>
+              <input type="password" id="signupPassword" required placeholder="••••••••" autocomplete="new-password" />
+            </div>
+
+            <div class="form-group">
+              <label for="signupConfirmPassword">تأكيد كلمة المرور</label>
+              <input type="password" id="signupConfirmPassword" required placeholder="••••••••" autocomplete="new-password" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-auth">تسجيل حساب جديد</button>
+          </form>
+
+          <div class="auth-divider">
+            <span>أو التسجيل بواسطة</span>
+          </div>
+
+          <button class="btn btn-secondary btn-block btn-google" id="btnGoogleSignup">
+            <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="#EA4335" d="M12 5.04c1.67 0 3.2.58 4.38 1.71l3.27-3.27C17.67 1.63 14.98 1 12 1 7.35 1 3.4 3.65 1.48 7.5l3.85 2.99c.9-2.7 3.4-4.45 6.67-4.45z"/>
+              <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.27H12v4.51h6.46c-.29 1.48-1.14 2.73-2.42 3.57v2.96h3.9c2.28-2.1 3.55-5.19 3.55-8.77z"/>
+              <path fill="#FBBC05" d="M5.33 10.49c-.23-.7-.36-1.45-.36-2.24s.13-1.54.36-2.24L1.48 3.02C.54 4.9 0 7.01 0 9.25c0 2.24.54 4.35 1.48 6.23l3.85-2.99z"/>
+              <path fill="#34A853" d="M12 17.5c2.97 0 5.46-.98 7.28-2.66l-3.9-2.96c-1.08.72-2.47 1.16-3.38 1.16-3.27 0-5.77-1.75-6.67-4.45l-3.85 2.99C3.4 14.85 7.35 17.5 12 17.5z"/>
+            </svg>
+            سجل باستخدام Google
+          </button>
+
+          <p class="auth-footer-text">
+            لديك حساب بالفعل؟ <a href="/login" class="nav-route">تسجيل الدخول</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- ROUTE VIEW: LOGIN PAGE -->
+    <!-- ------------------------------------------------------------- -->
+    <div id="view-login" class="route-view">
+      <div class="auth-page-wrapper">
+        <div class="auth-card glass-panel">
+          <div class="auth-header">
+            <a href="/" class="auth-logo nav-route">CutFlow <span>✂️</span></a>
+            <h2>تسجيل الدخول</h2>
+            <p>مرحباً بك مجدداً في كوت فلو</p>
+          </div>
+          
+          <form class="auth-form" id="loginForm">
+            <div class="form-error-msg hidden" id="loginError"></div>
+
+            <div class="form-group">
+              <label for="loginEmail">البريد الإلكتروني</label>
+              <input type="email" id="loginEmail" required placeholder="name@example.com" autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <div class="label-wrapper">
+                <label for="loginPassword">كلمة المرور</label>
+                <a href="/forgot-password" class="forgot-pass-link nav-route">نسيت كلمة المرور؟</a>
+              </div>
+              <input type="password" id="loginPassword" required placeholder="••••••••" autocomplete="current-password" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-auth">تسجيل الدخول</button>
+          </form>
+
+          <div class="auth-divider">
+            <span>أو تسجيل الدخول بواسطة</span>
+          </div>
+
+          <button class="btn btn-secondary btn-block btn-google" id="btnGoogleLogin">
+            <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="#EA4335" d="M12 5.04c1.67 0 3.2.58 4.38 1.71l3.27-3.27C17.67 1.63 14.98 1 12 1 7.35 1 3.4 3.65 1.48 7.5l3.85 2.99c.9-2.7 3.4-4.45 6.67-4.45z"/>
+              <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.27H12v4.51h6.46c-.29 1.48-1.14 2.73-2.42 3.57v2.96h3.9c2.28-2.1 3.55-5.19 3.55-8.77z"/>
+              <path fill="#FBBC05" d="M5.33 10.49c-.23-.7-.36-1.45-.36-2.24s.13-1.54.36-2.24L1.48 3.02C.54 4.9 0 7.01 0 9.25c0 2.24.54 4.35 1.48 6.23l3.85-2.99z"/>
+              <path fill="#34A853" d="M12 17.5c2.97 0 5.46-.98 7.28-2.66l-3.9-2.96c-1.08.72-2.47 1.16-3.38 1.16-3.27 0-5.77-1.75-6.67-4.45l-3.85 2.99C3.4 14.85 7.35 17.5 12 17.5z"/>
+            </svg>
+            الدخول باستخدام Google
+          </button>
+
+          <p class="auth-footer-text">
+            ليس لديك حساب بعد؟ <a href="/signup" class="nav-route">إنشاء حساب جديد</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- ROUTE VIEW: FORGOT PASSWORD PAGE -->
+    <!-- ------------------------------------------------------------- -->
+    <div id="view-forgot-password" class="route-view">
+      <div class="auth-page-wrapper">
+        <div class="auth-card glass-panel">
+          <div class="auth-header">
+            <a href="/" class="auth-logo nav-route">CutFlow <span>✂️</span></a>
+            <h2>استعادة كلمة المرور</h2>
+            <p>أدخل بريدك الإلكتروني لإرسال رابط إعادة التعيين</p>
+          </div>
+          
+          <form class="auth-form" id="forgotForm">
+            <div class="form-success-msg hidden" id="forgotSuccess">
+              ✓ تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني بنجاح!
+            </div>
+            
+            <div class="form-group" id="forgotGroupInput">
+              <label for="forgotEmail">البريد الإلكتروني</label>
+              <input type="email" id="forgotEmail" required placeholder="name@example.com" autocomplete="email" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-auth" id="btnForgotSubmit">إرسال رابط الاستعادة</button>
+          </form>
+
+          <p class="auth-footer-text">
+            <a href="/login" class="nav-route">العودة إلى تسجيل الدخول</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- ROUTE VIEW: CORE PROTECTED DASHBOARD PAGE -->
+    <!-- ------------------------------------------------------------- -->
+    <div id="view-dashboard" class="route-view">
+      <div class="dashboard-root-layout">
+        
+        <!-- Fixed Right Sidebar (Desktop only) -->
+        <aside class="dash-sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-logo">
+              CutFlow <span>✂️</span>
+            </div>
+            <nav class="sidebar-menu">
+              <a href="/dashboard" class="dash-nav-item nav-route active" id="navHome">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">الرئيسية</span>
+              </a>
+              <a href="/dashboard/editor" class="dash-nav-item nav-route" id="navEditor">
+                <span class="nav-icon">✂️</span>
+                <span class="nav-text">إزالة السكتات</span>
+              </a>
+              <a href="/dashboard/videos" class="dash-nav-item nav-route" id="navVideos">
+                <span class="nav-icon">🎬</span>
+                <span class="nav-text">فيديوهاتي</span>
+              </a>
+              <a href="/dashboard/settings" class="dash-nav-item nav-route" id="navSettings">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">الإعدادات</span>
+              </a>
+              <a href="/dashboard/account" class="dash-nav-item nav-route" id="navAccount">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">حسابي</span>
+              </a>
+            </nav>
+          </div>
+          
+          <div class="sidebar-bottom">
+            <div class="sidebar-profile">
+              <div class="sidebar-avatar" id="sidebarAvatar">A</div>
+              <div class="sidebar-profile-info">
+                <span class="profile-name" id="sidebarProfileName">صانع المحتوى</span>
+                <span class="profile-plan" id="userBadgeEl">باقة Free</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block btn-logout-sidebar" id="btnSidebarLogout">تسجيل الخروج</button>
+          </div>
+        </aside>
+
+        <!-- Fixed Bottom Navigation (Mobile only) -->
+        <nav class="mobile-bottom-nav">
+          <a href="/dashboard" class="mobile-nav-item nav-route active" id="mobNavHome" title="الرئيسية">
+            <span class="mob-icon">🏠</span>
+            <span class="mob-text">الرئيسية</span>
+          </a>
+          <a href="/dashboard/editor" class="mobile-nav-item nav-route" id="mobNavEditor" title="إزالة السكتات">
+            <span class="mob-icon">✂️</span>
+            <span class="mob-text">القص</span>
+          </a>
+          <a href="/dashboard/videos" class="mobile-nav-item nav-route" id="mobNavVideos" title="فيديوهاتي">
+            <span class="mob-icon">🎬</span>
+            <span class="mob-text">فيديوهاتي</span>
+          </a>
+          <a href="/dashboard/settings" class="mobile-nav-item nav-route" id="mobNavSettings" title="الإعدادات">
+            <span class="mob-icon">⚙️</span>
+            <span class="mob-text">الإعدادات</span>
+          </a>
+          <a href="/dashboard/account" class="mobile-nav-item nav-route" id="mobNavAccount" title="حسابي">
+            <span class="mob-icon">👤</span>
+            <span class="mob-text">حسابي</span>
+          </a>
+        </nav>
+
+        <!-- Main Content Area -->
+        <div class="dash-main-layout">
+          
+          <!-- 1. SUBVIEW: DASHBOARD HOME -->
+          <div id="dash-subview-home" class="dash-subview active">
+            <div class="subview-header">
+              <h1 class="subview-title">أهلاً <span id="dashWelcomeName">صانع المحتوى</span> 👋</h1>
+              <p class="subview-subtitle">استوديو التحكم الذكي لقص الفيديوهات بأعلى جودة</p>
+            </div>
+
+            <!-- Stats grid -->
+            <div class="dash-stats-grid">
+              <div class="dash-stat-card glass-panel">
+                <span class="stat-card-icon">⏳</span>
+                <div class="stat-card-details">
+                  <span class="stat-card-label">الدقائق المستخدمة</span>
+                  <strong class="stat-card-value"><span id="statMinutes">0</span> / 30 دقيقة</strong>
+                </div>
+              </div>
+              <div class="dash-stat-card glass-panel">
+                <span class="stat-card-icon">🎬</span>
+                <div class="stat-card-details">
+                  <span class="stat-card-label">الفيديوهات المعالجة</span>
+                  <strong class="stat-card-value" id="statVideosCount">0</strong>
+                </div>
+              </div>
+              <div class="dash-stat-card glass-panel">
+                <span class="stat-card-icon">💎</span>
+                <div class="stat-card-details">
+                  <span class="stat-card-label">الباقة الحالية</span>
+                  <strong class="stat-card-value" id="statPlanTier">Free</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Action button -->
+            <div class="dash-quick-action-row">
+              <a href="/dashboard/editor" class="btn btn-primary nav-route btn-lg">ارفع فيديو جديد ✂️</a>
+            </div>
+
+            <!-- Table of recent videos / empty state -->
+            <div class="dash-recent-videos-wrapper">
+              <h3 class="recent-videos-title">آخر المقاطع المعالجة</h3>
+              
+              <!-- Empty state view -->
+              <div class="table-empty-state glass-panel" id="dashHomeEmptyState">
+                <div class="empty-illustration-wrapper">
+                  <svg class="empty-svg" viewBox="0 0 100 100" width="120" height="120">
+                    <defs>
+                      <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#9F67FF" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.2"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Audio Wave Visual -->
+                    <rect x="15" y="45" width="6" height="10" rx="3" fill="url(#purpleGrad)"/>
+                    <rect x="25" y="30" width="6" height="40" rx="3" fill="url(#purpleGrad)"/>
+                    <rect x="35" y="48" width="6" height="4" rx="2" fill="#EF4444" opacity="0.8"/>
+                    <rect x="45" y="35" width="6" height="30" rx="3" fill="url(#purpleGrad)"/>
+                    <rect x="55" y="48" width="6" height="4" rx="2" fill="#EF4444" opacity="0.8"/>
+                    <rect x="65" y="20" width="6" height="60" rx="3" fill="url(#purpleGrad)"/>
+                    <rect x="75" y="40" width="6" height="20" rx="3" fill="url(#purpleGrad)"/>
+                    
+                    <!-- Cloud Icon overlay -->
+                    <path d="M50 55 C60 55, 65 65, 58 72 C55 75, 45 75, 42 72 C35 65, 40 55, 50 55 Z" fill="#7C3AED" opacity="0.4"/>
+                    <path d="M47 62 L50 59 L53 62 M50 59 L50 69" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  </svg>
+                </div>
+                <h4>لا توجد فيديوهات معالجة بعد</h4>
+                <p>ارفع أول فيديو لك بالذكاء الاصطناعي لتجربة ميزة إزالة الفراغات الفائقة</p>
+                <a href="/dashboard/editor" class="btn btn-secondary nav-route" style="margin-top:0.5rem;">ارفع فيديو الآن</a>
+              </div>
+
+              <!-- Filled list container (shows after first upload) -->
+              <div class="dash-home-filled-list hidden" id="dashHomeRecentTable">
+                <div class="recent-videos-list" id="homeRecentVideosList">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 2. SUBVIEW: EDITOR STUDIO -->
+          <div id="dash-subview-editor" class="dash-subview">
+            <div class="subview-header">
+              <h1 class="subview-title">استوديو إزالة السكتات الذكي ✂️</h1>
+              <p class="subview-subtitle">ارفع المقطع الخاص بك وسيقوم الـ AI بإزالة الفراغات الصوتية تلقائياً في ثوانٍ</p>
+            </div>
+
+            <div class="uploader-studio-card glass-panel" style="max-width: 850px; margin: 0 auto;">
+              <div class="dash-uploader-container" id="dashUploader">
+
+                <!-- STATE 1: Upload Zone -->
+                <div class="dash-upload-zone" id="dashUploadZone">
+                  <div class="upload-icon-wrapper">
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                  </div>
+                  <h3>☁️ اسحب ملف الفيديو وضعه هنا</h3>
+                  <p>الصيغ المدعومة: MP4, MOV, AVI, MKV — الحد الأقصى: 2 جيجابايت</p>
+                  <button class="btn btn-primary" id="btnDashUploadTrigger">استعرض الملفات من جهازك</button>
+                  <input type="file" id="dashFileInput" accept="video/mp4,video/quicktime,video/x-msvideo,video/x-matroska,video/*,audio/*" style="display: none;" />
+                </div>
+
+                <!-- STATE 2: Settings Panel (shown after file selected) -->
+                <div class="dash-settings-panel hidden" id="dashSettingsPanel">
+
+                  <!-- File Preview Card -->
+                  <div class="file-preview-card">
+                    <div class="file-preview-icon">🎬</div>
+                    <div class="file-preview-info">
+                      <strong id="previewFileName">video.mp4</strong>
+                      <span id="previewFileMeta">-- MB</span>
+                    </div>
+                    <button class="btn-remove-file" id="btnRemoveFile" title="إزالة الملف">✕</button>
+                  </div>
+
+                  <div class="settings-divider"></div>
+
+                  <!-- Language Selector -->
+                  <div class="settings-group">
+                    <label class="settings-label">🌐 لغة المحتوى</label>
+                    <div class="lang-selector-grid" id="langSelectorGrid">
+                      <button class="lang-btn active" data-lang="ar" id="langBtnAr">🇪🇬 عربي</button>
+                      <button class="lang-btn" data-lang="en" id="langBtnEn">🇺🇸 English</button>
+                      <button class="lang-btn" data-lang="both" id="langBtnBoth">🔀 كلاهما</button>
+                    </div>
+                  </div>
+
+                  <!-- Silence Threshold Slider -->
+                  <div class="settings-group">
+                    <div class="settings-label-row">
+                      <label class="settings-label">⏱️ حد السكتة الأدنى للحذف</label>
+                      <span class="settings-value-badge" id="silenceThresholdValue">0.5 ث</span>
+                    </div>
+                    <input
+                      type="range"
+                      id="silenceThresholdSlider"
+                      class="settings-slider"
+                      min="3"
+                      max="20"
+                      value="5"
+                      step="1"
+                    />
+                    <div class="slider-labels">
+                      <span>0.3 ث</span>
+                      <span>سريع</span>
+                      <span>2.0 ث</span>
+                    </div>
+                  </div>
+
+                  <!-- Sensitivity Slider -->
+                  <div class="settings-group">
+                    <div class="settings-label-row">
+                      <label class="settings-label">🎚️ حساسية الكشف</label>
+                      <span class="settings-value-badge" id="sensitivityValue">متوسط</span>
+                    </div>
+                    <input
+                      type="range"
+                      id="sensitivitySlider"
+                      class="settings-slider"
+                      min="1"
+                      max="3"
+                      value="2"
+                      step="1"
+                    />
+                    <div class="slider-labels">
+                      <span>منخفض</span>
+                      <span>متوسط</span>
+                      <span>عالي</span>
+                    </div>
+                  </div>
+
+                  <!-- Toggles Row -->
+                  <div class="settings-toggles-row">
+                    <!-- Filler Words Toggle -->
+                    <div class="settings-toggle-item">
+                      <div class="toggle-text">
+                        <span class="toggle-title">إزالة كلمات الحشو</span>
+                        <span class="toggle-sub">"آه" و"يعني" و"امممم"</span>
+                      </div>
+                      <label class="toggle-switch">
+                        <input type="checkbox" id="fillerWordsToggle" />
+                        <span class="toggle-thumb"></span>
+                      </label>
+                    </div>
+
+                    <!-- Preview Toggle -->
+                    <div class="settings-toggle-item">
+                      <div class="toggle-text">
+                        <span class="toggle-title">معاينة قبل التحميل</span>
+                        <span class="toggle-sub">مراجعة النتيجة أولاً</span>
+                      </div>
+                      <label class="toggle-switch">
+                        <input type="checkbox" id="previewBeforeDownload" checked />
+                        <span class="toggle-thumb"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="settings-divider"></div>
+
+                  <!-- Action Buttons -->
+                  <div class="settings-action-row">
+                    <button class="btn btn-secondary" id="btnCancelUpload">إلغاء</button>
+                    <button class="btn btn-primary btn-process" id="btnStartProcessing">✂️ ابدأ المعالجة</button>
+                  </div>
+                </div>
+
+                <!-- STATE 3: Processing -->
+                <div class="dash-processing-zone hidden" id="dashProcessingZone">
+                  <div class="spinner-outer">
+                    <div class="spinner-inner"></div>
+                    <div class="spinner-center">CUT</div>
+                  </div>
+
+                  <div class="processing-steps-list">
+                    <div class="proc-step" id="procStep1">
+                      <span class="proc-step-icon">📤</span>
+                      <span class="proc-step-text">جاري رفع الفيديو...</span>
+                    </div>
+                    <div class="proc-step" id="procStep2">
+                      <span class="proc-step-icon">🧠</span>
+                      <span class="proc-step-text">الـ AI بيحلل الصوت...</span>
+                    </div>
+                    <div class="proc-step" id="procStep3">
+                      <span class="proc-step-icon">✂️</span>
+                      <span class="proc-step-text">بيشيل السكتات...</span>
+                    </div>
+                    <div class="proc-step" id="procStep4">
+                      <span class="proc-step-icon">✅</span>
+                      <span class="proc-step-text">جاهز للتحميل!</span>
+                    </div>
+                  </div>
+
+                  <h3 id="dashProcTitle">📤 جاري رفع الفيديو...</h3>
+                  <p id="dashProcSub">يُرجى الانتظار، المعالج الذكي يستبعد لحظات الصمت...</p>
+
+                  <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" id="dashProgressBar" style="width: 0%"></div>
+                  </div>
+                  <span class="progress-percentage" id="dashProgressPercent">0%</span>
+                </div>
+
+                <!-- STATE 4: Done / Timeline Editor -->
+                <div class="dash-done-zone hidden" id="dashDoneZone" style="max-width: 1000px; margin: 0 auto; width: 100%;">
+                  
+                  <div class="timeline-editor-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2 style="font-size: 1.4rem; color: var(--color-text-primary); margin: 0;">مراجعة المقاطع (Timeline)</h2>
+                    <div style="font-size: 0.9rem; color: var(--color-text-secondary); background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: var(--border-radius-sm);">
+                      الاختصارات: <kbd style="background: #333; padding: 2px 6px; border-radius: 4px; font-family: monospace;">Space</kbd> تشغيل/إيقاف • <kbd style="background: #333; padding: 2px 6px; border-radius: 4px; font-family: monospace;">Del</kbd> حذف
+                    </div>
+                  </div>
+
+                  <!-- Video Player Container -->
+                  <div class="video-preview-container glass-panel" style="margin-bottom: 1.5rem; overflow: hidden; display: flex; justify-content: center; background: #000; border-radius: var(--border-radius-md); position: relative;">
+                    <video id="timelinePreview" style="max-height: 400px; width: auto; max-width: 100%; border-radius: var(--border-radius-md);" preload="auto"></video>
+                    <!-- Play overlay icon -->
+                    <div id="playOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.7; cursor: pointer; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">▶️</div>
+                  </div>
+
+                  <!-- Timeline Controls -->
+                  <div class="timeline-toolbar glass-panel" style="display: flex; gap: 0.8rem; padding: 0.8rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="btnTimelinePlay" style="padding: 0.5rem 1rem;">▶️ تشغيل</button>
+                    <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.1); margin: 0 0.5rem;"></div>
+                    
+                    <button class="btn btn-secondary" id="btnTimelineSplit" style="padding: 0.5rem 1rem;" disabled>✂️ تقسيم المقطع</button>
+                    <button class="btn btn-secondary" id="btnTimelineToggle" style="padding: 0.5rem 1rem;" disabled>🗑️ حذف / استعادة</button>
+                    
+                    <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.1); margin: 0 0.5rem;"></div>
+                    <button class="btn btn-secondary" id="btnTimelineUndo" style="padding: 0.5rem 1rem;" disabled>↩️ تراجع</button>
+                    <button class="btn btn-secondary" id="btnTimelineReset" style="padding: 0.5rem 1rem;">🔄 إعادة تعيين</button>
+
+                    <div style="flex: 1;"></div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                      <button class="btn btn-secondary" id="btnZoomOut" style="padding: 0.4rem; font-size: 1.2rem;">🔍-</button>
+                      <button class="btn btn-secondary" id="btnZoomIn" style="padding: 0.4rem; font-size: 1.2rem;">🔍+</button>
+                    </div>
+                  </div>
+
+                  <!-- The Timeline Track -->
+                  <div class="timeline-track-wrapper glass-panel" style="padding: 1rem; position: relative; margin-bottom: 2rem; overflow-x: auto; background: rgba(15, 11, 30, 0.8);">
+                    <div class="timeline-time-ruler" id="timelineRuler" style="height: 20px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 0.5rem;"></div>
+                    <div id="timelineTrack" style="height: 60px; position: relative; border-radius: 4px; overflow: hidden; background: rgba(0,0,0,0.4); display: flex; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);">
+                      <!-- Segments injected here -->
+                    </div>
+                    <div id="timelinePlayhead" style="position: absolute; top: 1rem; bottom: 1rem; width: 2px; background: var(--color-primary-light); left: 0; pointer-events: none; z-index: 10; box-shadow: 0 0 8px var(--color-primary-light);">
+                      <div style="position: absolute; top: -6px; left: -5px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--color-primary-light);"></div>
+                    </div>
+                  </div>
+
+                  <!-- Selected Segment Info / Editor -->
+                  <div id="segmentEditorPanel" class="glass-panel hidden" style="padding: 1rem; margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center; border-color: rgba(124, 58, 237, 0.3);">
+                    <div style="font-weight: bold; color: var(--color-primary-light);">المقطع المحدد:</div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                      <label style="color: var(--color-text-secondary); font-size: 0.85rem;">البداية:</label>
+                      <input type="number" id="segInputStart" step="0.1" style="width: 80px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 0.3rem; border-radius: 4px;" />
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                      <label style="color: var(--color-text-secondary); font-size: 0.85rem;">النهاية:</label>
+                      <input type="number" id="segInputEnd" step="0.1" style="width: 80px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 0.3rem; border-radius: 4px;" />
+                    </div>
+                    <div id="segDurationBadge" style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.8rem; border-radius: 4px; font-family: var(--font-english); font-size: 0.9rem;">-- s</div>
+                    <div style="flex: 1;"></div>
+                    <button class="btn btn-primary btn-sm" id="btnUpdateSegment" style="padding: 0.4rem 1rem;">تطبيق التعديل</button>
+                  </div>
+
+                  <!-- Final Export Section -->
+                  <div class="timeline-export-section glass-panel" style="padding: 1.5rem; border-color: var(--color-success); box-shadow: 0 4px 20px rgba(16, 185, 129, 0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                      <div>
+                        <h3 style="margin: 0 0 0.5rem 0; color: #fff;">جاهز للتصدير؟</h3>
+                        <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.9rem;">إجمالي الوقت المزال: <strong id="resSavedTimeTimeline" class="text-success" style="font-family: var(--font-english); font-size: 1.1rem;">--</strong></p>
+                      </div>
+                      
+                      <!-- Export Format Selector -->
+                      <div class="export-format-grid" id="exportFormatGrid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem;">
+                        <button class="export-fmt-btn active" data-fmt="mp4" id="fmtMp4">
+                          <span class="fmt-icon">🎬</span>
+                          <span class="fmt-label">MP4</span>
+                          <span class="fmt-sub">فيديو مقصوص</span>
+                        </button>
+                        <button class="export-fmt-btn" data-fmt="edl" id="fmtEdl">
+                          <span class="fmt-icon">📋</span>
+                          <span class="fmt-label">EDL</span>
+                          <span class="fmt-sub">DaVinci Resolve</span>
+                        </button>
+                        <button class="export-fmt-btn" data-fmt="xml" id="fmtXml">
+                          <span class="fmt-icon">📄</span>
+                          <span class="fmt-label">XML</span>
+                          <span class="fmt-sub">Premiere Pro</span>
+                        </button>
+                        <button class="export-fmt-btn" data-fmt="srt" id="fmtSrt">
+                          <span class="fmt-icon">💬</span>
+                          <span class="fmt-label">SRT</span>
+                          <span class="fmt-sub">ترجمة الصمت</span>
+                        </button>
+                      </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-lg" id="btnDashDownloadResult" style="background: var(--color-success); border-color: var(--color-success); width: 100%; font-size: 1.2rem; padding: 1rem; display: flex; justify-content: center; gap: 0.5rem; align-items: center;">
+                      <span id="btnDownloadIcon" style="font-size: 1.4rem;">🎬</span> <span id="btnDownloadLabel">بدء الرندر وتصدير MP4</span>
+                    </button>
+                    <div id="renderProgressZone" class="hidden" style="margin-top: 1rem; text-align: center;">
+                       <p style="color: var(--color-primary-light); font-weight: bold; margin-bottom: 0.5rem;">جاري الرندر النهائي ومعالجة الفيديو...</p>
+                       <div class="progress-bar-wrapper" style="height: 10px; background: rgba(255,255,255,0.1);">
+                         <div class="progress-bar-fill" id="renderProgressBar" style="width: 0%; transition: width 0.3s; background: var(--color-success);"></div>
+                       </div>
+                    </div>
+                  </div>
+                  
+                  <div style="margin-top: 1rem; text-align: center;">
+                    <button class="btn btn-secondary" id="btnDashResetUploader" style="font-size: 0.9rem;">✂️ العودة ورفع فيديو جديد</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. SUBVIEW: MY VIDEOS HISTORY -->
+          <div id="dash-subview-videos" class="dash-subview">
+            <div class="subview-header">
+              <h1 class="subview-title">مكتبة فيديوهاتي المعالجة 🎬</h1>
+              <p class="subview-subtitle">استعرض وحمّل مقاطعك التي تمت إزالة السكتات منها (يتم تخزينها لـ 24 ساعة فقط)</p>
+            </div>
+
+            <div class="recent-videos-card glass-panel" style="max-width: 850px; margin: 0 auto;">
+              <!-- Videos list view / empty state -->
+              <div class="table-empty-state" id="dashVideosEmptyState" style="padding: 3rem 1rem;">
+                <div class="empty-illustration-wrapper">
+                  <span>📂</span>
+                </div>
+                <h4>قائمتك فارغة تماماً</h4>
+                <p>لم يتم العثور على أي مقاطع فيديو معالجة في حسابك بعد.</p>
+                <a href="/dashboard/editor" class="btn btn-primary nav-route" style="margin-top: 1rem;">ابدأ معالجة أول ملف</a>
+              </div>
+
+              <!-- Filled list container -->
+              <div class="dash-videos-list-container hidden" id="dashVideosListFilled">
+                <div class="recent-videos-list" id="videosListFullContainer">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. SUBVIEW: SETTINGS -->
+          <div id="dash-subview-settings" class="dash-subview">
+            <div class="subview-header">
+              <h1 class="subview-title">إعدادات المونتاج الذكي ⚙️</h1>
+              <p class="subview-subtitle">خصّص تفضيلات خوارزميات الـ AI وطريقة قطع وسحب الفراغات</p>
+            </div>
+
+            <div class="settings-card glass-panel" style="max-width: 700px; margin: 0 auto; padding: 2.5rem;">
+              <form class="auth-form" id="settingsForm" onsubmit="event.preventDefault(); alert('تم حفظ تفضيلات المونتاج بنجاح! ✨');">
+                
+                <div class="form-group">
+                  <label for="noiseGate">عتبة كتم الضوضاء (Noise Gate Threshold): <strong id="noiseLabel" style="font-family:var(--font-english)">-35 dB</strong></label>
+                  <input type="range" id="noiseGate" min="-60" max="-20" value="-35" style="accent-color:var(--color-primary-light); cursor:pointer;" 
+                    oninput="document.getElementById('noiseLabel').textContent = this.value + ' dB'" />
+                  <p style="font-size:0.8rem; color:var(--color-text-secondary); margin-top:-0.25rem;">أي صوت أقل من هذه العتبة سيعتبر صمتاً ويُستبعد.</p>
+                </div>
+
+                <div class="form-group" style="margin-top:1rem;">
+                  <label for="silenceGap">الحد الأدنى لطول السكتة المستبعدة: <strong id="silenceLabel" style="font-family:var(--font-english)">0.3 s</strong></label>
+                  <input type="range" id="silenceGap" min="1" max="20" value="3" style="accent-color:var(--color-primary-light); cursor:pointer;" 
+                    oninput="document.getElementById('silenceLabel').textContent = (this.value / 10).toFixed(1) + ' s'" />
+                  <p style="font-size:0.8rem; color:var(--color-text-secondary); margin-top:-0.25rem;">تحديد الطول الزمني الأصغر بالثواني للفراغ ليتم التعرف عليه وقطعه.</p>
+                </div>
+
+                <div class="form-group" style="margin-top:1rem;">
+                  <label for="exportFormat">تنسيق التصدير التلقائي</label>
+                  <select id="exportFormat" style="background:rgba(255,255,255,0.03); border:1px solid rgba(124,58,237,0.15); padding:0.8rem 1rem; border-radius:var(--border-radius-sm); color:#fff; font-family:var(--font-arabic); font-weight:600; cursor:pointer;">
+                    <option value="mp4" style="background:#0F0B1E;">فيديو مدمج ومقصوص (MP4)</option>
+                    <option value="xml" style="background:#0F0B1E;">مخطط زمني لـ Premiere Pro (XML)</option>
+                    <option value="edl" style="background:#0F0B1E;">مخطط زمني لـ DaVinci Resolve (EDL)</option>
+                    <option value="srt" style="background:#0F0B1E;">ملف نصوص الترجمة والتوقيت (SRT)</option>
+                  </select>
+                </div>
+
+                <div class="form-group" style="margin-top:1rem; flex-direction:row; justify-content:space-between; align-items:center;">
+                  <div>
+                    <label style="margin-bottom:0;">تنعيم الانتقالات (Crossfade)</label>
+                    <p style="font-size:0.8rem; color:var(--color-text-secondary); margin-top:0.1rem;">إضافة انتقال صوتي ناعم جداً (3 مللي ثانية) عند مكان القطع لمنع سماع طقطقة.</p>
+                  </div>
+                  <input type="checkbox" checked style="width:20px; height:20px; accent-color:var(--color-primary-light); cursor:pointer;" />
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-auth" style="margin-top:1.5rem;">حفظ إعدادات المونتاج</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- 5. SUBVIEW: ACCOUNT INFO -->
+          <div id="dash-subview-account" class="dash-subview">
+            <div class="subview-header">
+              <h1 class="subview-title">إعدادات حسابي الشخصي 👤</h1>
+              <p class="subview-subtitle">تفاصيل اشتراكك، الرصيد المتبقي، والوصول البرمجي للـ API</p>
+            </div>
+
+            <div class="account-card-container" style="max-width: 700px; margin: 0 auto; display:flex; flex-direction:column; gap:2rem;">
+              
+              <!-- Card 1: Subscription status -->
+              <div class="profile-card-details glass-panel" style="padding:2.5rem;">
+                <h3 style="margin-bottom:1.5rem;">الاشتراك والرصيد</h3>
+                
+                <div class="results-card glass-panel" style="max-width:100%; margin-bottom:1.5rem; border-color:rgba(124, 58, 237, 0.1);">
+                  <div class="results-row">
+                    <span>الباقة الحالية:</span>
+                    <strong class="text-gradient" id="accPlanTier">Free (مخطط تجريبي)</strong>
+                  </div>
+                  <div class="results-row">
+                    <span>الرصيد المتبقي:</span>
+                    <strong id="accCredits">300 دقيقة</strong>
+                  </div>
+
+                  <div class="results-row" id="upgradeBtnContainer" style="margin-top: 15px; border-top: none; justify-content: flex-end;">
+                    <button class="btn btn-primary" id="btnAccountUpgrade" style="background: linear-gradient(135deg, #7C3AED, #EC4899);">الترقية الآن ✨</button>
+                  </div>
+                  <div class="results-row">
+                    <span>تاريخ التجديد القادم:</span>
+                    <span>23 يوليو 2026</span>
+                  </div>
+                </div>
+
+                <a href="/#pricing" class="btn btn-primary btn-block nav-route" style="text-align:center;">ترقية الباقة الآن 🔥</a>
+              </div>
+
+              <!-- Card 2: API Keys for Creators/Developers -->
+              <div class="profile-card-details glass-panel" style="padding:2.5rem;">
+                <h3 style="margin-bottom:0.5rem;">وصول المطورين (API Integration)</h3>
+                <p style="font-size:0.9rem; color:var(--color-text-secondary); margin-bottom:1.5rem;">استخدم واجهتنا البرمجية لقص الفيديوهات تلقائياً مباشرة من برامجك وخوادمك الخاصة</p>
+                
+                <div class="form-group">
+                  <label for="apiKey">مفتاح الـ API الخاص بك</label>
+                  <div style="display:flex; gap:0.5rem; direction:ltr;">
+                    <button class="btn btn-secondary" onclick="navigator.clipboard.writeText(document.getElementById('apiKey').value); alert('تم نسخ مفتاح الـ API بنجاح! 📋');" style="border-radius:var(--border-radius-sm); padding:0.8rem 1rem;">Copy</button>
+                    <input type="text" id="apiKey" readonly value="sk_cutflow_live_998822adbe776e01aef881" style="flex-grow:1; background:rgba(255,255,255,0.02); border:1px solid rgba(124,58,237,0.15); border-radius:var(--border-radius-sm); color:#b4b0c4; padding:0.8rem 1.2rem; font-family:var(--font-english); font-size:0.9rem;" />
+                  </div>
+                  <p style="font-size:0.8rem; color:var(--color-text-muted); margin-top:0.25rem; direction:rtl; text-align:right;">⚠️ لا تقم بمشاركة هذا المفتاح مع أي شخص آخر؛ فهو يمثل صلاحية حسابك ورصيدك.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- ROUTE VIEW: FULL SCREEN TIMELINE EDITOR -->
+    <!-- ------------------------------------------------------------- -->
+    <div id="view-timeline" class="route-view full-screen-app hidden">
+      
+      <!-- TOP BAR -->
+      <div class="cc-topbar">
+        <div class="cc-topbar-left">
+          <div class="cc-export-dropdown-container">
+            <button class="btn btn-primary btn-sm" id="ccBtnExport">تصدير ⬇️</button>
+            <div class="cc-dropdown-menu hidden" id="ccExportMenu">
+              <div class="cc-dropdown-item" data-fmt="mp4">تصدير فيديو MP4</div>
+              <div class="cc-dropdown-item" data-fmt="edl">تصدير مشروع EDL (DaVinci)</div>
+              <div class="cc-dropdown-item" data-fmt="xml">تصدير مشروع XML (Premiere)</div>
+              <div class="cc-dropdown-item" data-fmt="srt">تصدير ترجمة SRT</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cc-topbar-center">
+          <button class="cc-icon-btn" id="ccBtnUndo" disabled title="تراجع (Ctrl+Z)">↩️</button>
+          <button class="cc-icon-btn" id="ccBtnRedo" disabled title="إعادة (Ctrl+Shift+Z)">↪️</button>
+        </div>
+
+        <div class="cc-topbar-right">
+          <span class="cc-project-name" id="ccProjectName">مشروع بدون اسم</span>
+          <a href="/dashboard" class="cc-logo nav-route" id="ccBtnHome">CutFlow <span>✂️</span></a>
+        </div>
+      </div>
+
+      <!-- WORKSPACE -->
+      <div class="cc-workspace">
+        
+        <!-- LEFT PANEL -->
+        <div class="cc-left-panel">
+          <div class="cc-tabs">
+            <div class="cc-tab active" data-target="cc-tab-media">📁 المقاطع</div>
+            <div class="cc-tab" data-target="cc-tab-tools">✂️ أدوات</div>
+          </div>
+          <div class="cc-tab-content active" id="cc-tab-media">
+             <div class="cc-media-grid" id="ccMediaGrid">
+               <div style="color:var(--color-text-muted); font-size: 0.8rem; text-align: center; margin-top: 2rem;">
+                  الفيديو الأصلي متصل وجاهز للقص
+               </div>
+             </div>
+          </div>
+          <div class="cc-tab-content hidden" id="cc-tab-tools">
+            <button class="btn btn-secondary btn-block" id="ccBtnSplitTool" style="margin-bottom: 0.5rem; text-align: right; background: rgba(255,255,255,0.05);">✂️ تقسيم المقطع (S)</button>
+            <button class="btn btn-secondary btn-block" id="ccBtnBladeMode" style="margin-bottom: 0.5rem; text-align: right; background: rgba(255,255,255,0.05);">🔪 وضع الشفرة (B)</button>
+            <button class="btn btn-secondary btn-block" id="ccBtnDeleteTool" style="margin-bottom: 0.5rem; text-align: right; background: rgba(239,68,68,0.15);">🗑️ قص / حذف الجزء (Del)</button>
+            <button class="btn btn-secondary btn-block" id="ccBtnRippleDelete" style="margin-bottom: 0.5rem; text-align: right; background: rgba(239,68,68,0.1);">⚡ حذف وإغلاق الفراغ (Shift+Del)</button>
+            <button class="btn btn-secondary btn-block" id="ccBtnRestoreTool" style="margin-bottom: 0.5rem; text-align: right; background: rgba(16,185,129,0.1);">♻️ استعادة الجزء المحذوف</button>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 0.5rem 0;">
+            <p style="font-size:0.75rem; color: var(--color-text-muted); margin-top: 0.5rem;">اختصارات لوحة المفاتيح:</p>
+            <p style="font-size:0.72rem; color: var(--color-text-muted); line-height:1.8;">Space = تشغيل/إيقاف<br>S = تقسيم<br>B = وضع الشفرة<br>Del = حذف<br>Shift+Del = حذف + إغلاق<br>Ctrl+Z = تراجع<br>← → = إطار واحد<br>Shift+← → = 5 ثواني</p>
+          </div>
+        </div>
+
+        <!-- CENTER STAGE (PLAYER) -->
+        <div class="cc-center-stage">
+           <div class="cc-video-wrapper">
+             <video id="ccVideo" preload="auto"></video>
+             <div id="ccPlayOverlay" class="cc-play-overlay hidden">▶️</div>
+           </div>
+           
+           <div class="cc-playback-controls">
+             <div class="cc-timecode" id="ccTimecode">00:00:00:00 / 00:00:00:00</div>
+             
+             <div class="cc-play-buttons">
+               <button class="cc-icon-btn" id="ccBtnStart" title="للبداية">⏮</button>
+               <button class="cc-icon-btn" id="ccBtnBack5" title="رجوع 5 ثواني">⏪</button>
+               <button class="cc-icon-btn cc-play-pause" id="ccBtnPlayPause" title="تشغيل/إيقاف (Space)">▶️</button>
+               <button class="cc-icon-btn" id="ccBtnFwd5" title="تقديم 5 ثواني">⏩</button>
+               <button class="cc-icon-btn" id="ccBtnEnd" title="للنهاية">⏭</button>
+             </div>
+
+             <div class="cc-volume-control">
+               <span style="font-size: 1.2rem;">🔊</span>
+               <input type="range" id="ccVolume" min="0" max="1" step="0.1" value="1" />
+             </div>
+           </div>
+        </div>
+
+      </div>
+
+      <!-- TIMELINE BOTTOM -->
+      <div class="cc-timeline-area">
+         <div class="cc-timeline-toolbar">
+           <div class="cc-timeline-tools">
+              <button class="cc-icon-btn" id="ccBtnBladeTimeline" title="وضع الشفرة (B)">🔪</button>
+              <span id="ccBladeModeLabel" class="cc-blade-label hidden">وضع الشفرة نشط</span>
+           </div>
+           <div class="cc-zoom-controls">
+             <button class="cc-icon-btn" id="ccBtnZoomOut" title="تصغير (-)">🔍-</button>
+             <input type="range" id="ccZoomSlider" min="1" max="50" step="0.5" value="1" style="width:80px;" />
+             <button class="cc-icon-btn" id="ccBtnZoomIn" title="تكبير (+)">🔍+</button>
+             <span id="ccZoomLabel" style="font-size:0.75rem;color:#aaa;min-width:30px;">1x</span>
+           </div>
+         </div>
+         
+         <div class="cc-timeline-scroll-area" id="ccTimelineScrollArea">
+           <div class="cc-timeline-canvas" id="ccTimelineCanvas">
+             <!-- RULER -->
+             <div class="cc-ruler" id="ccRuler"></div>
+             
+             <!-- TRACKS -->
+             <div class="cc-tracks">
+                <div class="cc-track cc-video-track" id="ccTrackVideo">
+                  <!-- Segments injected here by JS -->
+                </div>
+             </div>
+
+             <!-- PLAYHEAD -->
+             <div class="cc-playhead-line" id="ccPlayhead">
+               <div class="cc-playhead-head"></div>
+             </div>
+             <!-- SNAP INDICATOR -->
+             <div class="cc-snap-indicator hidden" id="ccSnapIndicator"></div>
+             <!-- TRIM TOOLTIP -->
+             <div class="cc-trim-tooltip hidden" id="ccTrimTooltip"></div>
+           </div>
+         </div>
+      </div>
+      
+      <!-- Custom Context Menu -->
+      <div class="cc-context-menu hidden" id="ccContextMenu">
+        <div class="cc-ctx-item" id="ctxSplit">✂️ تقسيم هنا (S)</div>
+        <div class="cc-ctx-item" id="ctxToggle">♻️ قص / استعادة</div>
+        <div class="cc-ctx-item" id="ctxDelete">🗑️ حذف المقطع (Del)</div>
+      </div>
+
+    </div>
+
+
+    <!-- Upgrade Modal -->
+    <div id="upgradeModal" class="upgrade-modal hidden">
+      <div class="upgrade-modal-overlay"></div>
+      <div class="upgrade-modal-content glass-panel">
+        <button class="btn-close-modal" id="closeUpgradeModal">✕</button>
+        <div class="upgrade-header">
+          <h2>وصلت للحد المجاني ✂️</h2>
+          <p>رقّي باقتك عشان تكمل بدون حدود</p>
+        </div>
+        <div class="pricing-cards-container modal-pricing">
+            <!-- Monthly Plan -->
+            <div class="pricing-plan-card glass-panel monthly-plan">
+              <h3 class="plan-name">شهري</h3>
+              <div class="plan-price">
+                <span class="currency">$</span><span class="price-val">12</span><span class="period">/شهر</span>
+              </div>
+              <button class="btn btn-subscribe btn-block btn-payment-toast">اشترك الآن</button>
+            </div>
+            
+            <!-- Quarterly Plan -->
+            <div class="pricing-plan-card glass-panel quarterly-plan featured">
+              <div class="savings-badge">الأوفر 🔥</div>
+              <h3 class="plan-name">ربع سنوي</h3>
+              <div class="plan-price">
+                <span class="currency">$</span><span class="price-val">8</span><span class="period">/شهر</span>
+                <div class="billing-note">(تُدفع $24 كل 3 شهور)</div>
+              </div>
+              <button class="btn btn-subscribe btn-block btn-payment-toast">اشترك الآن</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

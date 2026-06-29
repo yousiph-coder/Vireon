@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Runtime uploads & processed files
+uploads/
+output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS & editor
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Local Vite cache
+*.local
+
+# Dev / scratch artifacts
+matches.json
+match_dump.json
+missing_code.js
+output.js
+fix*.cjs
+
+# Nested duplicate repository
+CUT FLOW/
