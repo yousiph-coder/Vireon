@@ -6,7 +6,7 @@ let mainJs = fs.readFileSync('src/../src/main.js', 'utf8');
 if (!mainJs.includes("'/pricing':")) {
     mainJs = mainJs.replace(
         "'/dashboard': { viewId: 'view-dashboard'",
-        "'/pricing': { viewId: 'view-pricing', requiresAuth: false, title: 'الأسعار | CutFlow' },\n    '/dashboard': { viewId: 'view-dashboard'"
+        "'/pricing': { viewId: 'view-pricing', requiresAuth: false, title: 'الأسعار | Vireon' },\n    '/dashboard': { viewId: 'view-dashboard'"
     );
 }
 
@@ -38,7 +38,7 @@ function showToast(message) {
 document.querySelectorAll('.btn-payment-toast').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    showToast('قريباً! سيتم إضافة الدفع قريباً — تواصل معنا على info@cutflow.io');
+    showToast('قريباً! سيتم إضافة الدفع قريباً — تواصل معنا على info@vireon.io');
   });
 });
 

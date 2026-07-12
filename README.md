@@ -1,8 +1,8 @@
-# CutFlow ✂️
+# Vireon ✂️
 
 **استوديو المونتاج الذكي — مزيل السكتات بالذكاء الاصطناعي**
 
-CutFlow is an AI-powered video silence remover built for Arabic and English content creators. Upload a video, let Whisper AI (or FFmpeg fallback) detect silences and filler words, review the timeline interactively, and export a clean cut — or download EDL/XML for professional NLE workflows.
+Vireon is an AI-powered video silence remover built for Arabic and English content creators. Upload a video, let Whisper AI (or FFmpeg fallback) detect silences and filler words, review the timeline interactively, and export a clean cut — or download EDL/XML for professional NLE workflows.
 
 ---
 
@@ -33,8 +33,8 @@ CutFlow is an AI-powered video silence remover built for Arabic and English cont
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/cutflow.git
-cd cutflow
+git clone https://github.com/YOUR_USERNAME/vireon.git
+cd vireon
 
 # 2. Install dependencies
 npm install
@@ -80,7 +80,7 @@ curl http://localhost:3000/api/health
 ## Project Structure
 
 ```
-cutflow/
+vireon/
 ├── index.html          # SPA shell — all route views (landing, auth, dashboard, editor)
 ├── server.js           # Express backend — upload, Whisper, FFmpeg, export
 ├── vite.config.js      # Vite configuration

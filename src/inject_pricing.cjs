@@ -10,7 +10,7 @@ const pricingViewHTML = `
     <div id="view-pricing" class="route-view">
       <header class="navbar-wrapper">
         <div class="container navbar-container">
-          <a href="/" class="logo nav-route">CutFlow <span>✂️</span></a>
+          <a href="/" class="logo nav-route">Vireon <span>✂️</span></a>
           <div class="nav-actions">
             <a href="/login" class="nav-link login-link nav-route">تسجيل الدخول</a>
             <a href="/signup" class="btn btn-primary nav-route">ابدأ مجاناً ✨</a>
@@ -23,7 +23,7 @@ const pricingViewHTML = `
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">اختر الباقة المناسبة لك</h2>
-            <p class="section-subtitle">لا توجد حدود للإبداع مع CutFlow</p>
+            <p class="section-subtitle">لا توجد حدود للإبداع مع Vireon</p>
             <div class="pricing-toggle-wrapper">
               <span class="toggle-label" id="labelMonthlyPricing">شهرياً</span>
               <button class="pricing-toggle-btn active" id="billingTogglePricing" aria-label="Toggle billing period">
