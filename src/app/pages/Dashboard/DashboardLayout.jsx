@@ -16,6 +16,22 @@ export default function DashboardLayout() {
   });
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
+  // ── Theme toggle ──────────────────────────────────────────────────────────
+  const getInitialTheme = () => {
+    const saved = localStorage.getItem('vireon-theme');
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('vireon-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  // ─────────────────────────────────────────────────────────────────────────
+
   useEffect(() => {
     localStorage.setItem('sidebarCollapsed', isCollapsed);
   }, [isCollapsed]);
@@ -380,6 +396,15 @@ export default function DashboardLayout() {
           <div className="topbar-actions">
             <button className="lang-toggle-btn" id="dashLangToggle" onClick={toggleLang}>
               {lang === 'ar' ? 'EN' : 'AR'}
+            </button>
+            <button
+              className="theme-toggle-btn topbar-icon-btn"
+              id="btnThemeToggle"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
             </button>
             <button className="topbar-icon-btn" id="btnNotifications" onClick={() => showToast(lang === 'ar' ? 'لا توجد إشعارات جديدة 🔔' : 'No new notifications 🔔', 'info')}>🔔</button>
             <button className="topbar-icon-btn hamburger-btn" id="btnMobileMenu" onClick={() => setIsMobileOpen(true)}>☰</button>

@@ -74,6 +74,18 @@ export default function DashboardHome() {
         </p>
       </div>
 
+      {/* Waveform timeline strip */}
+      <div className="vr-waveform-strip" aria-hidden="true">
+        {[40,65,30,80,55,90,35,70,50,85,45,75,60,95,40,70,55,80,35,65,90,50,75,45,85,60,30,70].map((h, i) => (
+          <div
+            key={i}
+            className="vr-bar"
+            style={{ height: `${h}%`, animationDelay: `${(i * 0.08).toFixed(2)}s` }}
+          />
+        ))}
+        <div className="vr-head" />
+      </div>
+
       {/* Stats Grid */}
       <div className="dash-stats-grid">
         <div className="dash-stat-card glass-panel">
@@ -104,7 +116,10 @@ export default function DashboardHome() {
       {/* Quick Action Banner */}
       <div className="dash-quick-action-banner">
         <div className="banner-text-group">
-          <h3>{t('dash.banner.title')}</h3>
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span className="vr-dot" />
+            {t('dash.banner.title')}
+          </h3>
           <p>{t('dash.banner.sub')}</p>
         </div>
         <div className="banner-waveform" aria-hidden="true">
@@ -116,7 +131,10 @@ export default function DashboardHome() {
           <div className="wm-bar"></div>
           <div className="wm-bar"></div>
         </div>
-        <Link to="/dashboard/fulledit" className="btn btn-primary btn-lg">{t('dash.banner.btn')}</Link>
+        <Link to="/dashboard/fulledit" className="btn btn-primary btn-lg">
+          <span className="vr-up" style={{ display: 'inline-flex', marginInlineEnd: '6px' }}>⬆️</span>
+          {t('dash.banner.btn')}
+        </Link>
       </div>
 
       {/* AI Features Grid / المميزات الأدوات الذكية */}
@@ -147,7 +165,7 @@ export default function DashboardHome() {
           {/* Card 1: التعديل الكامل */}
           <Link 
             to="/dashboard/fulledit" 
-            className="glass-panel feature-card-item" 
+            className="glass-panel feature-card-item vr-card" 
             style={{ 
               textDecoration: 'none', 
               color: 'inherit', 
@@ -156,10 +174,9 @@ export default function DashboardHome() {
               flexDirection: 'column', 
               alignItems: 'center', 
               textAlign: 'center', 
-              borderRadius: '16px', 
-              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%)', 
-              border: '1px solid rgba(124, 58, 237, 0.25)',
-              transition: 'transform 0.2s ease, border-color 0.2s ease'
+              borderRadius: 'var(--radius-lg)', 
+              background: 'rgba(122, 69, 160, 0.12)', 
+              border: '1px solid rgba(122, 69, 160, 0.25)',
             }}
           >
             <div style={{ marginBottom: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60px', height: '60px', borderRadius: '12px', background: 'rgba(124, 58, 237, 0.1)', border: '1px solid rgba(124, 58, 237, 0.2)', boxShadow: '0 0 15px rgba(124, 58, 237, 0.15)' }}>
@@ -170,7 +187,7 @@ export default function DashboardHome() {
                 <path d="M19 13.5v2.5M17.5 15h3M4.5 5.5v2M3.5 6.5h2M12 3v1.5M11.25 3.75h1.5"></path>
               </svg>
             </div>
-            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: '#fff' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: 'var(--text)' }}>
               {lang === 'ar' ? 'التعديل الكامل بـ AI' : 'AI Full Edit'}
             </h4>
             <p style={{ fontSize: '0.75rem', opacity: 0.7, lineHeight: '1.4', margin: 0 }}>
@@ -181,7 +198,7 @@ export default function DashboardHome() {
           {/* Card 2: إزالة السكتات */}
           <Link 
             to="/dashboard/editor" 
-            className="glass-panel feature-card-item" 
+            className="glass-panel feature-card-item vr-card" 
             style={{ 
               textDecoration: 'none', 
               color: 'inherit', 
@@ -190,9 +207,8 @@ export default function DashboardHome() {
               flexDirection: 'column', 
               alignItems: 'center', 
               textAlign: 'center', 
-              borderRadius: '16px', 
-              border: '1px solid rgba(255,255,255,0.05)',
-              transition: 'transform 0.2s ease, border-color 0.2s ease'
+              borderRadius: 'var(--radius-lg)', 
+              border: '1px solid var(--border-soft)',
             }}
           >
             <div style={{ marginBottom: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60px', height: '60px', borderRadius: '12px', background: 'rgba(34, 211, 238, 0.1)', border: '1px solid rgba(34, 211, 238, 0.2)', boxShadow: '0 0 15px rgba(34, 211, 238, 0.15)' }}>
@@ -204,7 +220,7 @@ export default function DashboardHome() {
                 <path d="M14 14v-4M17 16v-8M20 15v-6" opacity="0.8"></path>
               </svg>
             </div>
-            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: '#fff' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: 'var(--text)' }}>
               {lang === 'ar' ? 'إزالة السكتات' : 'Silence Removal'}
             </h4>
             <p style={{ fontSize: '0.75rem', opacity: 0.7, lineHeight: '1.4', margin: 0 }}>
@@ -215,7 +231,7 @@ export default function DashboardHome() {
           {/* Card 3: توليد النصوص */}
           <Link 
             to="/dashboard/captions" 
-            className="glass-panel feature-card-item" 
+            className="glass-panel feature-card-item vr-card" 
             style={{ 
               textDecoration: 'none', 
               color: 'inherit', 
@@ -224,9 +240,8 @@ export default function DashboardHome() {
               flexDirection: 'column', 
               alignItems: 'center', 
               textAlign: 'center', 
-              borderRadius: '16px', 
-              border: '1px solid rgba(255,255,255,0.05)',
-              transition: 'transform 0.2s ease, border-color 0.2s ease'
+              borderRadius: 'var(--radius-lg)', 
+              border: '1px solid var(--border-soft)',
             }}
           >
             <div style={{ marginBottom: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60px', height: '60px', borderRadius: '12px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', boxShadow: '0 0 15px rgba(239, 68, 68, 0.15)' }}>
@@ -238,7 +253,7 @@ export default function DashboardHome() {
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
             </div>
-            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: '#fff' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: 'var(--text)' }}>
               {lang === 'ar' ? 'توليد النصوص' : 'Auto Captions'}
             </h4>
             <p style={{ fontSize: '0.75rem', opacity: 0.7, lineHeight: '1.4', margin: 0 }}>
@@ -249,7 +264,7 @@ export default function DashboardHome() {
           {/* Card 4: إزالة التكرارات */}
           <Link 
             to="/dashboard/repetitions" 
-            className="glass-panel feature-card-item" 
+            className="glass-panel feature-card-item vr-card" 
             style={{ 
               textDecoration: 'none', 
               color: 'inherit', 
@@ -258,9 +273,8 @@ export default function DashboardHome() {
               flexDirection: 'column', 
               alignItems: 'center', 
               textAlign: 'center', 
-              borderRadius: '16px', 
-              border: '1px solid rgba(255,255,255,0.05)',
-              transition: 'transform 0.2s ease, border-color 0.2s ease'
+              borderRadius: 'var(--radius-lg)', 
+              border: '1px solid var(--border-soft)',
             }}
           >
             <div style={{ marginBottom: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60px', height: '60px', borderRadius: '12px', background: 'rgba(168, 85, 247, 0.1)', border: '1px solid rgba(168, 85, 247, 0.2)', boxShadow: '0 0 15px rgba(168, 85, 247, 0.15)' }}>
@@ -269,7 +283,7 @@ export default function DashboardHome() {
                 <line x1="8" y1="16" x2="16" y2="8" strokeWidth="2"></line>
               </svg>
             </div>
-            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: '#fff' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '8px', color: 'var(--text)' }}>
               {lang === 'ar' ? 'إزالة التكرارات' : 'Remove Repetitions'}
             </h4>
             <p style={{ fontSize: '0.75rem', opacity: 0.7, lineHeight: '1.4', margin: 0 }}>
@@ -281,7 +295,7 @@ export default function DashboardHome() {
       </div>
 
       {/* Recent Videos Wrapper (Moved to bottom) */}
-      <div className="dash-recent-videos-wrapper" style={{ marginTop: '80px', paddingTop: '30px', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+      <div className="dash-recent-videos-wrapper" style={{ marginTop: '80px', paddingTop: '30px', borderTop: '1px solid var(--border-soft)' }}>
         <h3 className="recent-videos-title">{t('dash.recent.title')}</h3>
         
         {loading ? (
